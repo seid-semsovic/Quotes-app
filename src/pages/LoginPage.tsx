@@ -58,7 +58,7 @@ const LoginPage = () => {
               label="Password"
               variant="outlined"
               size="small"
-              type="password" // Postavite tip na "password"
+              type="password"
               value={password}
               onChange={(e) => setPassword(e.target.value)}
               fullWidth
