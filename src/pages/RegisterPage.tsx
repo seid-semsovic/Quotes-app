@@ -10,10 +10,10 @@ import {
 } from "@mui/material";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { User } from "../types/user";
+
 import { VisibilityOff, Visibility } from "@mui/icons-material";
 
-const registeredUsers: User[] = [
+const registeredUsers = [
   {
     email: "semsovicseid@gmail.com",
     userName: "Seid",

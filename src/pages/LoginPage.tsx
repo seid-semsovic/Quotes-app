@@ -1,9 +1,8 @@
 import React, { useState } from "react";
 import { Button, Card, Grid, Paper, TextField } from "@mui/material";
-import { useNavigate } from "react-router-dom";
-import { userLogin } from "../types/user";
+import { useNavigate, useParams } from "react-router-dom";
 
-const users: userLogin[] = [
+const users = [
   {
     userName: "Seid",
     password: "seki123",
@@ -18,6 +17,7 @@ const LoginPage = () => {
   const navigate = useNavigate();
   const [userName, setUserName] = useState("");
   const [password, setPassword] = useState("");
+  const [loggedUser, setLoggedUser] = useState<any>([]);
 
   function onLoginHandler() {
     const loged = users.filter(
@@ -25,7 +25,9 @@ const LoginPage = () => {
     );
 
     if (loged.length > 0) {
-      navigate("/quotes");
+      console.log("setamo stejt");
+      setLoggedUser(loged);
+      navigate(`/quotes/?username=${userName}`);
     }
   }
 

@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import styled from "styled-components";
 
 const HomeContainer = styled.div`
-  background-color: #f0f0f0; /* Postavite boju pozadine prema vašem izboru */
+  background-color: #f1f1f5; /* Postavite boju pozadine prema vašem izboru */
   height: 100vh;
   display: flex;
   flex-direction: column;
@@ -40,13 +40,13 @@ const Button = styled(Link)`
 const HomePage: React.FC = () => {
   return (
     <HomeContainer>
-      <Title>DOBRODOŠLI NA STRANICU SA CITATIMA</Title>
+      <Title>WELCOME TO THE PAGE OF QUOTES</Title>
       <Description>
-        Ovdje možete pronaći inspirativne citate za svaki dan.
+        Here you can find inspirative quotes for every day.
       </Description>
       <ButtonContainer>
-        <Button to="/register">Registriraj se</Button>
-        <Button to="/">Prijavi se</Button>
+        <Button to="/register">Regsiter</Button>
+        <Button to="/">Log In</Button>
       </ButtonContainer>
     </HomeContainer>
   );
