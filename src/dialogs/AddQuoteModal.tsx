@@ -1,12 +1,12 @@
-import * as React from "react";
+import React, { useState } from "react";
 import Box from "@mui/material/Box";
 import Button from "@mui/material/Button";
 import Typography from "@mui/material/Typography";
 import Modal from "@mui/material/Modal";
-import { useState } from "react";
+import { TextField } from "@mui/material";
 
 const style = {
-  position: "absolute" as "absolute",
+  position: "absolute",
   top: "50%",
   left: "50%",
   transform: "translate(-50%, -50%)",
@@ -17,6 +17,16 @@ const style = {
   p: 4,
 };
 
+const textAreaStyle = {
+  width: "100%",
+  marginBottom: "16px",
+};
+
+const buttonContainerStyle = {
+  display: "flex",
+  justifyContent: "space-between",
+};
+
 export default function BasicModal({
   open,
   onClose,
@@ -24,6 +34,15 @@ export default function BasicModal({
   open: boolean;
   onClose: () => void;
 }) {
+  const [author, setAuthor] = useState("");
+  const [text, setText] = useState("");
+
+  function handleSave() {
+    console.log("Author:", author, "Quote:", text);
+    setAuthor("");
+    setText("");
+  }
+
   return (
     <div>
       <Modal
@@ -32,18 +51,41 @@ export default function BasicModal({
         aria-describedby="modal-modal-description"
       >
         <Box sx={style}>
-          <Typography id="modal-modal-title" variant="h6" component="h2">
+          <Typography variant="h6" component="h2">
             Text in a modal
           </Typography>
-          <Typography id="modal-modal-description" sx={{ mt: 2 }}>
-            Duis mollis, est non commodo luctus, nisi erat porttitor ligula.
-          </Typography>
-          <Button variant="contained" color="secondary">
-            Save
-          </Button>
-          <Button variant="contained" color="secondary" onClick={onClose}>
-            Discard
-          </Button>
+          <TextField
+            id="outlined-basic"
+            label="Author"
+            variant="outlined"
+            size="small"
+            sx={{ marginBottom: "1rem" }}
+            onChange={(e) => setAuthor(e.target.value)}
+          />
+          <textarea
+            placeholder="Text"
+            onChange={(e) => setText(e.target.value)}
+            rows={3}
+          />
+
+          <div style={buttonContainerStyle}>
+            <Button
+              variant="contained"
+              color="secondary"
+              sx={{ marginTop: "1rem" }}
+              onClick={handleSave}
+            >
+              Save
+            </Button>
+            <Button
+              variant="contained"
+              color="secondary"
+              sx={{ marginTop: "1rem" }}
+              onClick={onClose}
+            >
+              Discard
+            </Button>
+          </div>
         </Box>
       </Modal>
     </div>

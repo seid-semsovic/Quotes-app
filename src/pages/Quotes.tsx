@@ -20,7 +20,6 @@ const Quotes = () => {
 
   const [age, setAge] = useState("");
   const [quotes, setQuotes] = useState<any>([]);
-  console.log(quotes);
 
   const handleChange = (event: SelectChangeEvent) => {
     setAge(event.target.value as string);
